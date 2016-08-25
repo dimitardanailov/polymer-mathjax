@@ -1,0 +1,20 @@
+<script type="text/javascript">
+    /**
+     * this is a simple method that ensures a namespace is created
+     *
+     * @param  {String} namespace   the name of the namespace separated by `.`
+     * @param  {Function} module    module body
+     */
+    function namespace(namespace, module) {
+        var spaces = namespace.split('.');
+        var root = window;
+        for (var i = 0; i < spaces.length; i++) {
+            var space = spaces[i];
+            root[space] = root[space] || {};
+
+            root = root[space];
+        }
+
+        module(root);
+    }
+</script>
